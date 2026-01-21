@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trend Setter Remodeling</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            tsBg: "#ffffff",
+            tsInk: "#0b0c10",
+            tsMuted: "#6b7280",
+            tsLine: "rgba(15, 23, 42, 0.10)"
+          },
+          boxShadow: {
+            soft: "0 20px 70px rgba(15,23,42,0.10)"
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+
+<body class="bg-tsBg text-tsInk overflow-x-hidden" id="top">
+
+  <!-- HEADER -->
+  <header id="siteHeader" class="ts-header">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Slim nav row (logo LEFT) -->
+      <div class="ts-nav-row">
+        <!-- Logo LEFT -->
+        <a href="#top" class="flex items-center gap-3 no-underline">
+          <img src="assets/logo1.png" alt="Trend Setter Remodeling" class="ts-logo" />
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex items-center gap-8 text-[11px] tracking-[0.22em] uppercase">
+          <a href="#services" class="ts-link">Services</a>
+          <a href="#about" class="ts-link">About</a>
+          <a href="#projects" class="ts-link">Portfolio</a>
+          <a href="#contact" class="ts-link">Contact</a>
+        </nav>
+
+        <!-- Right side -->
+        <div class="hidden md:flex items-center gap-3">
+          <a href="tel:9152441025" class="ts-phone">
+            <i class="fa-solid fa-phone"></i>
+            <span>(915) 244-1025</span>
+          </a>
+          <a href="#contact" class="ts-btn ts-btn-primary">Schedule</a>
+        </div>
+
+        <!-- Mobile toggle -->
+        <button id="mobileToggle" class="md:hidden ts-icon-btn" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="md:hidden hidden pb-4">
+        <div class="pt-3 border-t border-black/10">
+          <a href="#services" class="ts-m-link">Services</a>
+          <a href="#about" class="ts-m-link">About</a>
+          <a href="#projects" class="ts-m-link">Portfolio</a>
+          <a href="#contact" class="ts-m-link">Contact</a>
+
+          <div class="mt-3 flex items-center justify-between gap-3">
+            <a href="tel:1234567890" class="ts-phone text-sm">
+              <i class="fa-solid fa-phone"></i>
+              <span>(123) 456-7890</span>
+           
+            <a href="#contact" class="ts-btn ts-btn-primary !px-4 !py-2">Schedule</a> </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+   <section class="ts-hero relative overflow-hidden">
+
+  <!-- Background VIDEO -->
+  <div class="ts-hero-bg" aria-hidden="true">
+    <video
+      class="ts-hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+    >
+      <source src="assets/herovideo.mp4" type="video/mp4" />
+      <!-- Fallback image if video fails -->
+    </video>
+
+    <!-- Overlay -->
+    <div class="ts-hero-overlay"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="min-h-[78vh] flex items-center">
+      <div class="max-w-3xl ts-reveal">
+
+        <div class="ts-eyebrow">
+          <span class="ts-line"></span>
+          <span class="ts-eyebrow-text">
+            Luxury Remodeling • Kitchens • Bathrooms
+          </span>
+        </div>
+
+        <h1 class="ts-title">
+          Fall Back In Love
+          <span class="block">With Your Home.</span>
+        </h1>
+
+        <p class="ts-sub">
+          Minimal, design-forward renovations with premium materials and clean execution.
+          We handle planning, trades, and finish work — so your remodel feels effortless.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a href="#contact" class="ts-btn ts-btn-primary">Schedule Now</a>
+       <a href="#contact" class="ts-btn ts-btn-primary">View Work</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- STATS -->
+    <section id="stats" class="ts-stats">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-4 sm:grid-cols-3">
+          <div class="ts-stat-card">
+            <div class="ts-stat-num" data-target="15" data-suffix="+">0</div>
+            <div class="ts-stat-label">Years of Experience</div>
+          </div>
+
+          <div class="ts-stat-card">
+            <div class="ts-stat-num" data-target="100" data-suffix="+">0</div>
+            <div class="ts-stat-label">Remodels Completed</div>
+          </div>
+
+          <div class="ts-stat-card">
+            <div class="ts-stat-num" data-target="4.9" data-decimals="1">0</div>
+            <div class="ts-stat-label">Client Rating</div>
+          </div>
+        </div>
+      </div>
+    </section>
+<!-- ABOUT SECTION -->
+<!-- ABOUT SECTION -->
+<section id="about" class="ts-about-section border-t border-black/10 bg-slate-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+
+    <div class="relative">
+
+      <!-- BIG OVERLAPPING "ABOUT US" -->
+      <div
+        class="pointer-events-none absolute left-4 sm:left-10 lg:left-1/2 lg:-translate-x-1/4 top-4 sm:top-8 lg:top-10 z-20"
+      >
+        <h2
+          class="text-[28px] sm:text-[40px] lg:text-[56px] xl:text-[64px] tracking-[0.32em] font-light uppercase text-tsInk"
+        >
+          ABOUT&nbsp;US
+        </h2>
+      </div>
+
+      <!-- MAIN CONTENT ROW -->
+      <div
+        class="relative z-10 flex flex-col lg:flex-row items-stretch gap-10 lg:gap-16 pt-24 sm:pt-28 lg:pt-20"
+      >
+
+        <!-- LEFT: IMAGE -->
+        <div class="lg:w-[46%]">
+          <div class="overflow-hidden rounded-2xl bg-slate-200 shadow-xl shadow-slate-900/5">
+            <img
+              src="assets/about.jpeg"
+              alt="TrendSetter Remodeling project in Dallas Fort Worth"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        <!-- RIGHT: TEXT -->
+        <div class="lg:w-[54%] flex flex-col justify-center lg:mt-6">
+          <p class="text-sm sm:text-base text-tsMuted leading-relaxed mb-5">
+            For over 16 years, TrendSetter Remodeling has been a family-owned,
+            Dallas–Fort Worth based contractor trusted by homeowners who want
+            clean, modern renovations without losing the character of their homes.
+            We’ve been a steady part of the DFW construction community — known for
+            quality work, honest timelines, and hands-on involvement on every job.
+          </p>
+
+          <p class="text-sm sm:text-base text-tsMuted leading-relaxed mb-5">
+            From custom home builds and high-end bathroom and kitchen renovations
+            to lighting, finishes, and detail work, our team is on-site and
+            involved from the first walkthrough to the final punch list. Clear
+            timelines, transparent pricing, and communication at every step are
+            non-negotiable for us.
+          </p>
+
+          <p class="text-sm sm:text-base text-tsMuted leading-relaxed">
+            As a family-owned business, we see every project as a long-term
+            relationship. 
+          </p>
+        </div>
+
+      </div>
+
+      <!-- SOCIAL ICONS ROW (CENTERED UNDERNEATH) -->
+      <div class="mt-10 flex items-center justify-center gap-6 text-lg text-tsInk/70">
+        <a href="#" aria-label="TrendSetter Remodeling on Twitter" class="hover:text-tsInk">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a href="#" aria-label="TrendSetter Remodeling on Facebook" class="hover:text-tsInk">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="#" aria-label="TrendSetter Remodeling on Instagram" class="hover:text-tsInk">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<!-- FEATURED PROJECT -->
+<section id="portfolio" class="ts-portfolio">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="grid lg:grid-cols-[1fr,1.4fr] gap-14 items-start">
+
+      <!-- LEFT: PROJECT INFO -->
+      <div class="ts-project-info">
+        <h2 class="ts-project-title">FLYWAY DRIVE</h2>
+
+        <p class="ts-project-location">
+          Dallas–Fort Worth, TX
+        </p>
+
+        <p class="ts-project-desc">
+          This custom residence features a thoughtful layout designed to maximize
+          natural light and flow throughout the home. High-end finishes, refined
+          detailing, and durable materials were selected to ensure both beauty and
+          longevity.
+        </p>
+
+        <p class="ts-project-credit">
+          Project completed by TrendSetter Remodeling
+        </p>
+
+        <a href="#projects" class="ts-project-btn">
+          All Projects
+        </a>
+      </div>
+
+      <!-- RIGHT: IMAGE GALLERY -->
+      <div class="ts-project-gallery" data-gallery>
+        <!-- Main image -->
+        <div class="ts-project-main">
+          <img src="assets/portfolio1.jpg" alt="Custom home exterior remodel" data-main-image />
+          <button class="ts-arrow left" type="button" data-prev>‹</button>
+          <button class="ts-arrow right" type="button" data-next>›</button>
+        </div>
+
+        <!-- Thumbnails (data-full used by JS) -->
+        <div class="ts-project-thumbs" data-thumbs>
+          <img src="assets/portfolio1-thumb.jpg" data-full="assets/portfolio1.jpg" class="active" alt="Exterior view">
+          <img src="assets/portfolio2-thumb.jpg" data-full="assets/portfolio2.jpg" alt="Kitchen interior">
+          <img src="assets/portfolio3-thumb.jpg" data-full="assets/portfolio3.jpg" alt="Bathroom detail">
+          <img src="assets/portfolio4-thumb.jpg" data-full="assets/portfolio4.jpg" alt="Living room">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- PROJECTS / 3D CAROUSEL -->
+<section id="projects" class="border-t border-black/10 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+
+    <!-- Heading -->
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10">
+      <div>
+        <div class="ts-eyebrow mb-3">
+          <span class="ts-line"></span>
+          <span class="ts-eyebrow-text">Selected Projects</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-tsInk">
+          Spaces that feel renovated<br class="hidden sm:block" />
+          without feeling overdesigned.
+        </h2>
+      </div>
+      <p class="text-sm sm:text-base text-tsMuted max-w-md">
+        A few recent kitchen, bathroom, and whole-home projects. Each one
+        started with awkward layouts, dated materials, and lighting that
+        worked against the space.
+      </p>
+    </div>
+
+ <!-- 3D CAROUSEL SHELL -->
+<div class="ts-carousel-shell">
+  <div class="ts-carousel-track" id="tsCarouselTrack">
+
+    <!-- Slide 1 -->
+    <article class="ts-carousel-item is-active" data-index="0">
+      <div class="ts-carousel-tag">Kitchen • Lakeview District</div>
+      <h3 class="ts-carousel-title">Warm Minimalist Kitchen</h3>
+      <p class="ts-carousel-text">
+        Removed an angled island, opened sightlines to the living room,
+        and layered warm oak, quartz, and hidden storage to keep surfaces clean.
+      </p>
+      <div class="ts-carousel-image">
+        <img src="assets/about.jpeg" alt="Warm minimalist kitchen remodel" />
+      </div>
+      <div class="ts-carousel-meta">
+        <span><i class="fa-regular fa-clock"></i> 8-week build</span>
+        <span><i class="fa-solid fa-arrow-trend-up"></i> +$45k appraised value</span>
+      </div>
+    </article>
+
+    <!-- Slide 2 -->
+    <article class="ts-carousel-item" data-index="1">
+      <div class="ts-carousel-tag">Primary Bath • Westview</div>
+      <h3 class="ts-carousel-title">Spa-Level Ensuite</h3>
+      <p class="ts-carousel-text">
+        Combined a cramped shower and tub into a single walk-in with
+        integrated niche lighting, large-format tile, and custom vanity.
+      </p>
+      <div class="ts-carousel-image">
+        <img src="assets/about2.jpeg" alt="Spa-like bathroom remodel" />
+      </div>
+      <div class="ts-carousel-meta">
+        <span><i class="fa-regular fa-clock"></i> 6-week build</span>
+        <span><i class="fa-solid fa-shower"></i> Heated floors + rain shower</span>
+      </div>
+    </article>
+
+    <!-- Slide 3 -->
+    <article class="ts-carousel-item" data-index="2">
+      <div class="ts-carousel-tag">Whole Home • Crestwood</div>
+      <h3 class="ts-carousel-title">Light-Forward Main Floor</h3>
+      <p class="ts-carousel-text">
+        Reworked walls, stair railings, and flooring to create a continuous,
+        bright main level with a calm, gallery-like feel.
+      </p>
+      <div class="ts-carousel-image">
+        <img src="assets/about3.jpeg" alt="Whole home main floor remodel" />
+      </div>
+      <div class="ts-carousel-meta">
+        <span><i class="fa-regular fa-clock"></i> 12-week build</span>
+        <span><i class="fa-regular fa-face-smile"></i> Repeat-client project</span>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Controls -->
+  <div class="ts-carousel-controls">
+    <button class="ts-carousel-btn ts-carousel-prev" aria-label="Previous project">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+
+    <div class="ts-carousel-dots" id="tsCarouselDots">
+      <button class="ts-dot is-active" data-index="0"></button>
+      <button class="ts-dot" data-index="1"></button>
+      <button class="ts-dot" data-index="2"></button>
+    </div>
+
+    <button class="ts-carousel-btn ts-carousel-next" aria-label="Next project">
+      <i class="fa-solid fa-arrow-right"></i>
+    </button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section id="contact" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-black/10">
+      <h2 class="text-sm tracking-[0.22em] uppercase text-tsMuted">Contact</h2>
+    </section>
+  </main>
+
+</body>
+</html>
