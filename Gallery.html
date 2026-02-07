@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery • Trend Setter Remodeling</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            tsBg: "#ffffff",
+            tsInk: "#0b0c10",
+            tsMuted: "#6b7280",
+            tsLine: "rgba(15, 23, 42, 0.10)"
+          },
+          boxShadow: {
+            soft: "0 18px 60px rgba(15,23,42,0.12)"
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #ffffff;
+      color: #0b0c10;
+    }
+
+    .gallery-item img {
+      transition: transform 500ms ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+  </style>
+</head>
+
+<body class="bg-tsBg text-tsInk">
+
+  <!-- SIMPLE HEADER -->
+<!-- HEADER -->
+<header class="border-b border-tsLine bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 relative flex items-center justify-center">
+
+    <!-- Back to Home (top left) -->
+    <a
+      href="index.html"
+      class="absolute left-4 sm:left-6 lg:left-8 text-xs tracking-[0.22em] uppercase border border-tsLine rounded-full px-4 py-2 hover:bg-slate-50 transition"
+    >
+      Back to Home
+    </a>
+
+    <!-- Centered Title -->
+    <h1 class="text-lg sm:text-xl lg:text-2xl font-light tracking-[0.28em] uppercase text-tsInk">
+      Trendsetter Gallery
+    </h1>
+
+  </div>
+</header>
+
+
+  <!-- INTRO -->
+  <section class="bg-slate-50 border-b border-tsLine">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="max-w-3xl">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="h-px w-10 bg-tsLine"></span>
+          <span class="text-[10px] tracking-[0.28em] uppercase text-tsMuted">
+            Our Work
+          </span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-6">
+          Check out our recent renovations.
+        </h1>
+
+        <p class="text-sm sm:text-base text-tsMuted leading-relaxed">
+          A selection of bathrooms, kitchens, and full-home renovations completed
+          across the Dallas–Fort Worth area. Every project focuses on clean lines,
+          durable materials, and workmanship that still looks right years later.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY GRID -->
+  <main class="bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 auto-rows-[260px]">
+
+        <!-- IMAGE 1 -->
+        <div class="gallery-item overflow-hidden rounded-2xl shadow-soft bg-slate-100">
+          <img src="assets/IMG_1024.jpeg" class="w-full h-full object-cover" />
+        </div>
+
+        <!-- IMAGE 2 (tall) -->
+        <div class="gallery-item overflow-hidden rounded-2xl shadow-soft bg-slate-100 sm:row-span-2">
+          <img src="assets/master-bath-design-5860000_1280.jpg" class="w-full h-full object-cover" />
+        </div>
+
+        <!-- IMAGE 3 -->
+        <div class="gallery-item overflow-hidden rounded-2xl shadow-soft bg-slate-100">
+          <img src="assets/portfolio2.jpeg" class="w-full h-full object-cover" />
+        </div>
+
+        <!-- IMAGE 4 -->
+        <div class="gallery-item overflow-hidden rounded-2xl shadow-soft bg-slate-100">
+          <img src="assets/portfolio3.jpeg" class="w-full h-full object-cover" />
+        </div>
+
+        <!-- IMAGE 5 (tall) -->
+        <div class="gallery-item overflow-hidden rounded-2xl shadow-soft bg-slate-100 lg:row-span-2">
+          <img src="assets/portfolio4.jpeg" class="w-full h-full object-cover" />
+        </div>
+
+        <!-- IMAGE 6 -->
+        <div class="gallery-item overflow-hidden rounded-2xl shadow-soft bg-slate-100">
+          <img src="assets/portfolio5.jpeg" class="w-full h-full object-cover" />
+        </div>
+
+        <!-- IMAGE 7 -->
+        <div class="gallery-item overflow-hidden rounded-2xl shadow-soft bg-slate-100">
+          <img src="assets/about.jpeg" class="w-full h-full object-cover" />
+        </div>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-16 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-tsLine pt-8">
+        <p class="text-sm text-tsMuted max-w-md">
+          Thinking about remodeling your home? Let’s talk through your space,
+          timeline, and goals.
+        </p>
+
+        <a
+          href="index.html#contact"
+          class="inline-flex items-center justify-center rounded-full bg-tsInk text-white text-[11px] tracking-[0.22em] uppercase px-6 py-3 hover:bg-black transition"
+        >
+          Schedule a consultation
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#05070a] text-slate-100 border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.7rem] text-slate-500 tracking-[0.18em] uppercase">
+        <span>© <span id="year"></span> Trend Setter Remodeling</span>
+        <span>
+          Made with care by
+          <a href="https://echelonwebsites.com" target="_blank" class="hover:text-slate-200">
+            Echelon
+          </a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

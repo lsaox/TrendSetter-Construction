@@ -48,14 +48,18 @@
       <div class="ts-nav-row">
         <!-- Logo LEFT -->
         <a href="#top" class="flex items-center gap-3 no-underline">
-          <img src="assets/logo1.png" alt="Trend Setter Remodeling" class="ts-logo" />
+          <img
+            src="assets/logo1.png"
+            alt="Trend Setter Remodeling"
+            class="ts-logo w-24 sm:w-32 h-auto"
+          />
         </a>
 
         <!-- Desktop nav -->
         <nav class="hidden md:flex items-center gap-8 text-[11px] tracking-[0.22em] uppercase">
           <a href="#services" class="ts-link">Services</a>
           <a href="#about" class="ts-link">About</a>
-          <a href="#projects" class="ts-link">Portfolio</a>
+          <a href="Gallery.html" class="ts-link">Gallery</a>
           <a href="#contact" class="ts-link">Contact</a>
         </nav>
 
@@ -86,7 +90,6 @@
             <a href="tel:1234567890" class="ts-phone text-sm">
               <i class="fa-solid fa-phone"></i>
               <span>(123) 456-7890</span>
-           
             <a href="#contact" class="ts-btn ts-btn-primary !px-4 !py-2">Schedule</a> </a>
           </div>
         </div>
@@ -101,17 +104,16 @@
 
   <!-- Background VIDEO -->
   <div class="ts-hero-bg" aria-hidden="true">
-    <video
-      class="ts-hero-video"
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="metadata"
-    >
-      <source src="assets/herovideo.mp4" type="video/mp4" />
-      <!-- Fallback image if video fails -->
-    </video>
+   <video 
+  class="ts-hero-video"
+  autoplay
+  muted
+  playsinline
+  preload="metadata"
+>
+  <source src="assets/ds.mp4" type="video/mp4" />
+</video>
+
 
     <!-- Overlay -->
     <div class="ts-hero-overlay"></div>
@@ -171,7 +173,6 @@
         </div>
       </div>
     </section>
-<!-- ABOUT SECTION -->
 <!-- ABOUT SECTION -->
 <section id="about" class="ts-about-section border-t border-black/10 bg-slate-50">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
@@ -250,55 +251,211 @@
 </section>
 
 
+<!-- PORTFOLIO SECTION -->
 
 
-<!-- FEATURED PROJECT -->
-<section id="portfolio" class="ts-portfolio">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-    <div class="grid lg:grid-cols-[1fr,1.4fr] gap-14 items-start">
 
-      <!-- LEFT: PROJECT INFO -->
-      <div class="ts-project-info">
-        <h2 class="ts-project-title">FLYWAY DRIVE</h2>
 
-        <p class="ts-project-location">
-          Dallas–Fort Worth, TX
-        </p>
+<section
+  id="portfolio"
+  class="border-t border-tsLine bg-[#020617] text-slate-100"
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+    <!-- Header -->
+    <div
+      class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10"
+    >
+      <div>
+        <div class="flex items-center gap-3 mb-2">
+          <span class="h-px w-10 bg-slate-500/60"></span>
+          <span
+            class="text-[10px] tracking-[0.26em] uppercase text-slate-400"
+          >
+            Featured Projects
+          </span>
+        </div>
+        <h2
+          class="text-2xl sm:text-3xl lg:text-[30px] font-light tracking-tight text-white"
+        >
+          Bathrooms, kitchens, and full home updates.
+        </h2>
+      </div>
 
-        <p class="ts-project-desc">
-          This custom residence features a thoughtful layout designed to maximize
-          natural light and flow throughout the home. High-end finishes, refined
-          detailing, and durable materials were selected to ensure both beauty and
-          longevity.
-        </p>
+      <p class="text-xs sm:text-sm md:text-base text-slate-300 max-w-sm">
+        A few recent remodels from around DFW — spa-like bathrooms, warm
+        kitchens, and coordinated updates that make the whole home feel
+        fresh again.
+      </p>
+    </div>
 
-        <p class="ts-project-credit">
-          Project completed by TrendSetter Remodeling
-        </p>
+    <!-- 3D Carousel Shell (lite) -->
+    <div class="ts-carousel-shell ts-carousel-shell--lite">
+      <div class="ts-carousel-track" data-carousel-track>
+        <!-- Slide 1 -->
+        <article class="ts-carousel-item is-active" data-index="0">
+          <div class="ts-carousel-tag">
+            Primary Bathroom • Plano
+          </div>
+          <h3 class="ts-carousel-title">
+            Light, spa-style primary bath with walk-in shower
+          </h3>
+          <p class="ts-carousel-text">
+            Full gut of an outdated primary bath: larger walk-in shower with
+            niche lighting, freestanding tub, warmer tile, and storage that
+            actually matches how the owners use the space.
+          </p>
+          <div class="ts-carousel-image">
+            <img
+              src="assets/portfolio1.jpg"
+              alt="Primary bathroom remodel in Plano"
+            />
+          </div>
+          <div class="ts-carousel-meta">
+            <span
+              ><i class="fa-solid fa-calendar-days"></i> 6-week timeline</span
+            >
+            <span
+              ><i class="fa-solid fa-ruler-combined"></i> 180 sq ft</span
+            >
+            <span><i class="fa-solid fa-droplet"></i> Full waterproofing</span>
+          </div>
+        </article>
 
-        <a href="#projects" class="ts-project-btn">
-          All Projects
+        <!-- Slide 2 -->
+        <article class="ts-carousel-item is-right" data-index="1">
+          <div class="ts-carousel-tag">
+            Flooring 
+          </div>
+          <h3 class="ts-carousel-title">
+            
+          </h3>
+          <p class="ts-carousel-text">
+            New layout, updated cabinets, quartz counters, and reworked
+            lighting turned a tight, dark kitchen into the center of the
+            home — without blowing out every wall.
+          </p>
+          <div class="ts-carousel-image">
+            <img
+              src="assets/portfolio2.jpeg"
+              alt="Kitchen remodel in North Dallas"
+            />
+          </div>
+          <div class="ts-carousel-meta">
+            <span><i class="fa-solid fa-kitchen-set"></i> New layout</span>
+            <span><i class="fa-solid fa-lightbulb"></i> Layered lighting</span>
+            <span
+              ><i class="fa-solid fa-paint-roller"></i> Updated finishes</span
+            >
+          </div>
+        </article>
+
+        <!-- Slide 3 -->
+        <article class="ts-carousel-item is-left" data-index="2">
+          <div class="ts-carousel-tag">
+            Full Home • Fort Worth
+          </div>
+          <h3 class="ts-carousel-title">
+            Coordinated updates across main living spaces
+          </h3>
+          <p class="ts-carousel-text">
+            Flooring, paint, trim, and bathroom upgrades done together so
+            the whole home feels intentional — not like a series of
+            separate projects.
+          </p>
+          <div class="ts-carousel-image">
+            <img
+              src="assets/portfolio3.jpeg"
+              alt="Full home remodeling project in Fort Worth"
+            />
+          </div>
+          <div class="ts-carousel-meta">
+            <span
+              ><i class="fa-solid fa-house-chimney"></i> Main level
+              overhaul</span
+            >
+            <span
+              ><i class="fa-solid fa-layer-group"></i> Consistent
+              finishes</span
+            >
+            <span
+              ><i class="fa-solid fa-clipboard-check"></i> Single project
+              plan</span
+            >
+          </div>
+        </article>
+
+        <!-- Slide 4 -->
+        <article class="ts-carousel-item is-far" data-index="3">
+          <div class="ts-carousel-tag">
+          Kitchen Renovations
+          </div>
+          <h3 class="ts-carousel-title">
+            High-end Kitchen Renovations 
+          </h3>
+          <p class="ts-carousel-text">
+            A compact bathroom designed for kids and guests: easy-to-clean
+            finishes, better lighting, and storage that keeps the counters
+            clear.
+          </p>
+          <div class="ts-carousel-image">
+            <img
+              src="assets/portfolio4.jpeg"
+              alt="Hall bathroom remodel in Richardson"
+            />
+          </div>
+          <div class="ts-carousel-meta">
+            <span><i class="fa-solid fa-children"></i> Family-friendly</span>
+            <span><i class="fa-solid fa-shower"></i> New tub/shower</span>
+            <span
+              ><i class="fa-solid fa-screwdriver-wrench"></i> Updated
+              plumbing</span
+            >
+          </div>
+        </article>
+      </div>
+
+      <!-- Controls -->
+      <div
+        class="ts-carousel-controls mt-6 flex flex-col sm:flex-row items-center justify-between gap-4"
+      >
+        <div class="flex items-center gap-3">
+          <button
+            class="ts-carousel-btn"
+            type="button"
+            data-carousel-prev
+            aria-label="Previous project"
+          >
+            <i class="fa-solid fa-chevron-left text-xs"></i>
+          </button>
+          <button
+            class="ts-carousel-btn"
+            type="button"
+            data-carousel-next
+            aria-label="Next project"
+          >
+            <i class="fa-solid fa-chevron-right text-xs"></i>
+          </button>
+        </div>
+
+        <div class="ts-carousel-dots" data-carousel-dots>
+          <button
+            class="ts-dot is-active"
+            type="button"
+            data-dot-index="0"
+          ></button>
+          <button class="ts-dot" type="button" data-dot-index="1"></button>
+          <button class="ts-dot" type="button" data-dot-index="2"></button>
+          <button class="ts-dot" type="button" data-dot-index="3"></button>
+        </div>
+
+        <a
+          href="Gallery.html"
+          class="inline-flex items-center gap-2 text-[10px] tracking-[0.22em] uppercase border border-slate-500/50 rounded-full px-4 py-2 hover:bg-slate-800/60 transition-colors"
+        >
+          <span>Open full gallery</span>
+          <i class="fa-solid fa-arrow-right text-[0.7rem]"></i>
         </a>
       </div>
-
-      <!-- RIGHT: IMAGE GALLERY -->
-      <div class="ts-project-gallery" data-gallery>
-        <!-- Main image -->
-        <div class="ts-project-main">
-          <img src="assets/portfolio1.jpg" alt="Custom home exterior remodel" data-main-image />
-          <button class="ts-arrow left" type="button" data-prev>‹</button>
-          <button class="ts-arrow right" type="button" data-next>›</button>
-        </div>
-
-        <!-- Thumbnails (data-full used by JS) -->
-        <div class="ts-project-thumbs" data-thumbs>
-          <img src="assets/portfolio1-thumb.jpg" data-full="assets/portfolio1.jpg" class="active" alt="Exterior view">
-          <img src="assets/portfolio2-thumb.jpg" data-full="assets/portfolio2.jpg" alt="Kitchen interior">
-          <img src="assets/portfolio3-thumb.jpg" data-full="assets/portfolio3.jpg" alt="Bathroom detail">
-          <img src="assets/portfolio4-thumb.jpg" data-full="assets/portfolio4.jpg" alt="Living room">
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -309,141 +466,361 @@
 
 
 
+<!-- SERVICES SECTION -->
+<section id="services" class="ts-services border-t border-black/10 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- PROJECTS / 3D CAROUSEL -->
-<section id="projects" class="border-t border-black/10 bg-white">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-
-    <!-- Heading -->
-    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10">
-      <div>
-        <div class="ts-eyebrow mb-3">
-          <span class="ts-line"></span>
-          <span class="ts-eyebrow-text">Selected Projects</span>
-        </div>
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-tsInk">
-          Spaces that feel renovated<br class="hidden sm:block" />
-          without feeling overdesigned.
-        </h2>
-      </div>
-      <p class="text-sm sm:text-base text-tsMuted max-w-md">
-        A few recent kitchen, bathroom, and whole-home projects. Each one
-        started with awkward layouts, dated materials, and lighting that
-        worked against the space.
-      </p>
-    </div>
-
- <!-- 3D CAROUSEL SHELL -->
-<div class="ts-carousel-shell">
-  <div class="ts-carousel-track" id="tsCarouselTrack">
-
-    <!-- Slide 1 -->
-    <article class="ts-carousel-item is-active" data-index="0">
-      <div class="ts-carousel-tag">Kitchen • Lakeview District</div>
-      <h3 class="ts-carousel-title">Warm Minimalist Kitchen</h3>
-      <p class="ts-carousel-text">
-        Removed an angled island, opened sightlines to the living room,
-        and layered warm oak, quartz, and hidden storage to keep surfaces clean.
-      </p>
-      <div class="ts-carousel-image">
-        <img src="assets/about.jpeg" alt="Warm minimalist kitchen remodel" />
-      </div>
-      <div class="ts-carousel-meta">
-        <span><i class="fa-regular fa-clock"></i> 8-week build</span>
-        <span><i class="fa-solid fa-arrow-trend-up"></i> +$45k appraised value</span>
-      </div>
-    </article>
-
-    <!-- Slide 2 -->
-    <article class="ts-carousel-item" data-index="1">
-      <div class="ts-carousel-tag">Primary Bath • Westview</div>
-      <h3 class="ts-carousel-title">Spa-Level Ensuite</h3>
-      <p class="ts-carousel-text">
-        Combined a cramped shower and tub into a single walk-in with
-        integrated niche lighting, large-format tile, and custom vanity.
-      </p>
-      <div class="ts-carousel-image">
-        <img src="assets/about2.jpeg" alt="Spa-like bathroom remodel" />
-      </div>
-      <div class="ts-carousel-meta">
-        <span><i class="fa-regular fa-clock"></i> 6-week build</span>
-        <span><i class="fa-solid fa-shower"></i> Heated floors + rain shower</span>
-      </div>
-    </article>
-
-    <!-- Slide 3 -->
-    <article class="ts-carousel-item" data-index="2">
-      <div class="ts-carousel-tag">Whole Home • Crestwood</div>
-      <h3 class="ts-carousel-title">Light-Forward Main Floor</h3>
-      <p class="ts-carousel-text">
-        Reworked walls, stair railings, and flooring to create a continuous,
-        bright main level with a calm, gallery-like feel.
-      </p>
-      <div class="ts-carousel-image">
-        <img src="assets/about3.jpeg" alt="Whole home main floor remodel" />
-      </div>
-      <div class="ts-carousel-meta">
-        <span><i class="fa-regular fa-clock"></i> 12-week build</span>
-        <span><i class="fa-regular fa-face-smile"></i> Repeat-client project</span>
-      </div>
-    </article>
+ <!-- Header -->
+<div class="flex flex-col items-center text-center gap-6 mb-14">
+  <div class="ts-eyebrow">
+    <span class="ts-line"></span>
 
   </div>
 
-  <!-- Controls -->
-  <div class="ts-carousel-controls">
-    <button class="ts-carousel-btn ts-carousel-prev" aria-label="Previous project">
-      <i class="fa-solid fa-arrow-left"></i>
-    </button>
+  <h2 class="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight text-tsInk">
+    Renovations built to last.
+  </h2>
 
-    <div class="ts-carousel-dots" id="tsCarouselDots">
-      <button class="ts-dot is-active" data-index="0"></button>
-      <button class="ts-dot" data-index="1"></button>
-      <button class="ts-dot" data-index="2"></button>
-    </div>
-
-    <button class="ts-carousel-btn ts-carousel-next" aria-label="Next project">
-      <i class="fa-solid fa-arrow-right"></i>
-    </button>
-  </div>
+  <p class="text-sm sm:text-base text-tsMuted max-w-xl">
+    We handle full residential renovations with a special focus on bathrooms,
+    while still taking care of kitchens, flooring, and the details that tie a home together.
+  </p>
 </div>
+    <!-- Services grid -->
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
+      <!-- Bathroom Renovations -->
+      <article class="ts-service-card">
+        <div class="ts-service-body">
+          <div class="ts-service-icon-wrap">
+            <i class="fa-solid fa-shower ts-service-icon"></i>
+          </div>
+          <h3 class="ts-service-title">Bathroom Renovations</h3>
+          <p class="ts-service-text">
+            Complete bathroom remodels with proper waterproofing, tile work,
+            ventilation, and lighting that feels calm and clean.
+          </p>
+          <ul class="ts-service-list">
+            <li>Custom showers and tubs</li>
+            <li>Tile and stone installation</li>
+            <li>Vanities, mirrors, and lighting</li>
+          </ul>
+        </div>
+        <div class="ts-service-cta-wrap">
+          <a href="#contact" class="ts-service-cta">Inquire now</a>
+        </div>
+      </article>
 
+      <!-- Kitchen Updates -->
+      <article class="ts-service-card">
+        <div class="ts-service-body">
+          <div class="ts-service-icon-wrap">
+            <i class="fa-solid fa-kitchen-set ts-service-icon"></i>
+          </div>
+          <h3 class="ts-service-title">Kitchen Updates</h3>
+          <p class="ts-service-text">
+            Kitchens tailored for daily use with better storage, new surfaces,
+            and lighting that makes the room easier to live in.
+          </p>
+          <ul class="ts-service-list">
+            <li>Cabinet updates and refacing</li>
+            <li>Counters and backsplashes</li>
+            <li>Layout and appliance changes</li>
+          </ul>
+        </div>
+        <div class="ts-service-cta-wrap">
+          <a href="#contact" class="ts-service-cta">Inquire now</a>
+        </div>
+      </article>
 
+      <!-- Flooring and Tile -->
+      <article class="ts-service-card">
+        <div class="ts-service-body">
+          <div class="ts-service-icon-wrap">
+            <i class="fa-solid fa-border-all ts-service-icon"></i>
+          </div>
+          <h3 class="ts-service-title">Flooring and Tile</h3>
+          <p class="ts-service-text">
+            New flooring and tile work that runs clean through the home
+            and holds up to real traffic and day to day life.
+          </p>
+          <ul class="ts-service-list">
+            <li>Luxury vinyl, wood, and tile</li>
+            <li>Stair treads and transitions</li>
+            <li>Repair and replacement</li>
+          </ul>
+        </div>
+        <div class="ts-service-cta-wrap">
+          <a href="#contact" class="ts-service-cta">Inquire now</a>
+        </div>
+      </article>
 
+      <!-- Full Home Renovations -->
+      <article class="ts-service-card">
+        <div class="ts-service-body">
+          <div class="ts-service-icon-wrap">
+            <i class="fa-solid fa-house-chimney ts-service-icon"></i>
+          </div>
+          <h3 class="ts-service-title">Full Home Renovations</h3>
+          <p class="ts-service-text">
+            Coordinated work across several rooms or full levels so everything
+            feels consistent from one space to the next.
+          </p>
+          <ul class="ts-service-list">
+            <li>Main level and whole home plans</li>
+            <li>Wall changes and openings</li>
+            <li>Lighting and finish packages</li>
+          </ul>
+        </div>
+        <div class="ts-service-cta-wrap">
+          <a href="#contact" class="ts-service-cta">Inquire now</a>
+        </div>
+      </article>
 
+      <!-- Interior Details -->
+      <article class="ts-service-card">
+        <div class="ts-service-body">
+          <div class="ts-service-icon-wrap">
+            <i class="fa-solid fa-lamp ts-service-icon fa-screwdriver-wrench"></i>
+          </div>
+          <h3 class="ts-service-title">Interior Details</h3>
+          <p class="ts-service-text">
+            Built ins, trim, lighting, and paint that tighten up a room
+            without needing a complete tear out.
+          </p>
+          <ul class="ts-service-list">
+            <li>Feature walls and trim work</li>
+            <li>Built ins and shelving</li>
+            <li>Lighting and switches</li>
+          </ul>
+        </div>
+        <div class="ts-service-cta-wrap">
+          <a href="#contact" class="ts-service-cta">Inquire now</a>
+        </div>
+      </article>
 
+      <!-- Repairs and Punch Work -->
+      <article class="ts-service-card">
+        <div class="ts-service-body">
+          <div class="ts-service-icon-wrap">
+            <i class="fa-solid fa-screwdriver-wrench ts-service-icon"></i>
+          </div>
+          <h3 class="ts-service-title">Repairs and Punch Work</h3>
+          <p class="ts-service-text">
+            Fixes for problem areas and unfinished items so the home
+            feels complete and ready to live in.
+          </p>
+          <ul class="ts-service-list">
+            <li>Damage and leak repair</li>
+            <li>Tile and grout touch ups</li>
+            <li>Final punch list items</li>
+          </ul>
+        </div>
+        <div class="ts-service-cta-wrap">
+          <a href="#contact" class="ts-service-cta">Inquire now</a>
+        </div>
+      </article>
 
+    </div>
 
+  </div>
+</section>
 
+<!-- CONTACT SECTION -->
+<section id="contact" class="ts-contact">
+  <div class="ts-contact-inner">
 
+    <!-- LEFT: IMAGE / INFO -->
+    <div class="ts-contact-media">
+      <div class="ts-contact-photo">
+        <img
+          src="assets/master-bath-design-5860000_1280.jpg"
+          alt="Remodel project in progress"
+        />
+      </div>
 
+      <div class="ts-contact-copy">
+        <h2 class="ts-contact-heading">
+          Ready to talk about your project?
+        </h2>
+        <p class="ts-contact-text">
+          Tell us a bit about your home, the work you’re considering, and your ideal timeline.
+          We’ll follow up with a quick call to see if we’re a good fit.
+        </p>
 
+        <ul class="ts-contact-points">
+          <li>Kitchen, bath, full-home remodels</li>
+          <li>Licensed & insured crew</li>
+          <li>Serving the greater DFW area</li>
+        </ul>
+      </div>
+    </div>
 
+    <!-- RIGHT: FORM -->
+    <div class="ts-contact-form-wrap">
+      <form class="ts-contact-form">
+        <h3 class="ts-contact-form-heading">Request a consultation</h3>
 
+        <div class="ts-contact-row">
+          <div class="ts-contact-field">
+            <label class="ts-contact-label">Name</label>
+            <input type="text" class="ts-contact-input" placeholder="Full name" required>
+          </div>
+          <div class="ts-contact-field">
+            <label class="ts-contact-label">Email</label>
+            <input type="email" class="ts-contact-input" placeholder="you@email.com" required>
+          </div>
+        </div>
 
+        <div class="ts-contact-row">
+          <div class="ts-contact-field">
+            <label class="ts-contact-label">Phone</label>
+            <input type="tel" class="ts-contact-input" placeholder="(555) 555-5555">
+          </div>
+          <div class="ts-contact-field">
+            <label class="ts-contact-label">Timeline</label>
+            <input type="text" class="ts-contact-input" placeholder="ASAP, 3 months, this year…">
+          </div>
+        </div>
 
-    <section id="contact" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-black/10">
-      <h2 class="text-sm tracking-[0.22em] uppercase text-tsMuted">Contact</h2>
-    </section>
+        <div class="ts-contact-field">
+          <label class="ts-contact-label">Project type</label>
+          <input type="text" class="ts-contact-input" placeholder="Kitchen, bathroom, full home, etc.">
+        </div>
+
+        <div class="ts-contact-field">
+          <label class="ts-contact-label">Tell us about your project</label>
+          <textarea class="ts-contact-input ts-contact-textarea" rows="4"
+            placeholder="Square footage, rooms, must-haves, inspiration, budget range…"></textarea>
+        </div>
+
+        <button type="submit" class="ts-contact-btn">
+          Send request
+        </button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<footer class="bg-[#05070a] text-slate-100 border-t border-white/10">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
+
+    <!-- TOP -->
+    <div class="flex flex-col items-center text-center gap-6 mb-12">
+      <img
+        src="assets/logo1.png"
+        alt="Trend Setter Remodeling"
+        class="w-40 sm:w-48 h-auto"
+      />
+
+      <p class="text-sm text-slate-300 leading-relaxed max-w-xl">
+        Family-owned remodeling focused on bathrooms, finishes, and
+        long-term quality across Dallas–Fort Worth.
+      </p>
+    </div>
+
+    <!-- CENTER GRID -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center mb-12">
+
+      <!-- NAV -->
+      <div class="space-y-4">
+        <h4 class="text-xs font-medium tracking-[0.22em] uppercase text-slate-400">
+          Navigation
+        </h4>
+        <nav class="flex flex-col gap-2 text-sm">
+          <a href="#about" class="hover:text-white transition-colors">About</a>
+          <a href="#services" class="hover:text-white transition-colors">Services</a>
+          <a href="#portfolio" class="hover:text-white transition-colors">Portfolio</a>
+          <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+        </nav>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="space-y-4">
+        <h4 class="text-xs font-medium tracking-[0.22em] uppercase text-slate-400">
+          Contact
+        </h4>
+        <div class="space-y-2 text-sm">
+          <a
+            href="tel:9152441025"
+            class="inline-flex items-center gap-2 hover:text-white transition-colors"
+          >
+            <i class="fa-solid fa-phone text-[0.85rem] opacity-80"></i>
+            <span>(915) 244-1025</span>
+          </a>
+
+          <a
+            href="#contact"
+            class="inline-flex items-center gap-2 hover:text-white transition-colors"
+          >
+            <i class="fa-solid fa-calendar-check text-[0.9rem] opacity-80"></i>
+            <span>Schedule a consultation</span>
+          </a>
+
+          <p class="pt-2 text-slate-400 text-xs leading-relaxed">
+            Dallas–Fort Worth Metroplex<br />
+            Texas
+          </p>
+        </div>
+      </div>
+
+      <!-- HOURS -->
+      <div class="space-y-4">
+        <h4 class="text-xs font-medium tracking-[0.22em] uppercase text-slate-400">
+          Hours
+        </h4>
+        <div class="space-y-1.5 text-sm">
+          <div class="flex justify-center gap-3">
+            <span class="text-slate-400">Mon – Fri</span>
+            <span>9:00am – 5:00pm</span>
+          </div>
+          <div class="flex justify-center gap-3">
+            <span class="text-slate-400">Sat</span>
+            <span>By appointment</span>
+          </div>
+          <div class="flex justify-center gap-3">
+            <span class="text-slate-400">Sun</span>
+            <span>Closed</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="border-t border-white/10 pt-6">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 text-[0.7rem] text-slate-500 tracking-[0.18em] uppercase">
+        <span>
+          © <span id="year"></span> Trend Setter Remodeling
+        </span>
+
+        <span class="flex items-center gap-1">
+          Made with care by
+          <a
+            href="https://echelonwebsites.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-slate-200 transition-colors"
+          >
+            <span class="font-[Orbitron] tracking-[0.22em]">Echelon</span>
+          </a>
+        </span>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<!-- FOOTER -->
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
   </main>
 
 </body>

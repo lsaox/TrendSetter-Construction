@@ -291,3 +291,301 @@ document.addEventListener("DOMContentLoaded", function () {
     setActive(0);
   });
 });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const video = document.querySelector(".ts-hero-video");
+    if (!video) return;
+
+    const pauseBeforeEnd = 1; // seconds before end
+
+    const stopNearEnd = () => {
+      if (video.duration && video.currentTime >= video.duration - pauseBeforeEnd) {
+        video.pause();
+        video.removeEventListener("timeupdate", stopNearEnd);
+      }
+    };
+
+    video.addEventListener("timeupdate", stopNearEnd);
+  });
+
+// ============================
+// Mobile Nav Toggle
+// ============================
+(function () {
+  const toggle = document.getElementById("mobileToggle");
+  const menu = document.getElementById("mobileMenu");
+
+  if (!toggle || !menu) return;
+
+  toggle.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+
+  // Close menu when a link is clicked
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu.classList.add("hidden");
+    });
+  });
+})();
+
+// ============================
+// Header Scroll State
+// ============================
+(function () {
+  const header = document.getElementById("siteHeader");
+  if (!header) return;
+
+  const onScroll = () => {
+    if (window.scrollY > 30) {
+      header.classList.add("ts-header--scrolled");
+    } else {
+      header.classList.remove("ts-header--scrolled");
+    }
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+})();
+
+// ============================
+// Stat Counters (IntersectionObserver)
+// ============================
+(function () {
+  const statEls = Array.from(document.querySelectorAll(".ts-stat-num"));
+  if (!statEls.length) return;
+
+  let hasRun = false;
+
+  const animateStats = () => {
+    if (hasRun) return;
+    hasRun = true;
+
+    statEls.forEach((el) => {
+      const targetAttr = el.getAttribute("data-target");
+      if (!targetAttr) return;
+
+      const target = parseFloat(targetAttr);
+      if (isNaN(target)) return;
+
+      const suffix = el.getAttribute("data-suffix") || "";
+      const decimals = parseInt(el.getAttribute("data-decimals") || "0", 10);
+      const duration = 1200;
+      const start = performance.now();
+
+      const from = 0;
+
+      const step = (now) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+
+        const value = from + (target - from) * eased;
+        el.textContent = value.toFixed(decimals) + suffix;
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.classList.add("ts-stat-done");
+        }
+      };
+
+      requestAnimationFrame(step);
+    });
+  };
+
+  // Use IntersectionObserver to trigger when stats are visible
+  const statsSection = document.getElementById("stats") || document.querySelector(".ts-stats");
+  if (!statsSection) {
+    // Fallback: if we can't find a section, just run
+    animateStats();
+    return;
+  }
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateStats();
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        threshold: 0.25,
+      }
+    );
+
+    observer.observe(statsSection);
+  } else {
+    // Old browsers: just animate on load
+    animateStats();
+  }
+})();
+
+// ============================
+// Portfolio Gallery Slider
+// ============================
+(function () {
+  const gallery = document.querySelector("[data-gallery]");
+  if (!gallery) return;
+
+  const mainImg = gallery.querySelector("[data-main-image]");
+  const thumbsContainer = gallery.querySelector("[data-thumbs]");
+  const prevBtn = gallery.querySelector("[data-prev]");
+  const nextBtn = gallery.querySelector("[data-next]");
+
+  if (!mainImg || !thumbsContainer) return;
+
+  const thumbs = Array.from(thumbsContainer.querySelectorAll("img"));
+  if (!thumbs.length) return;
+
+  let currentIndex = thumbs.findIndex((img) =>
+    img.classList.contains("active")
+  );
+  if (currentIndex === -1) currentIndex = 0;
+
+  const setImage = (index) => {
+    if (index < 0 || index >= thumbs.length) return;
+
+    const newThumb = thumbs[index];
+    const fullSrc = newThumb.getAttribute("data-full") || newThumb.src;
+
+    // Swap main image with a tiny fade
+    mainImg.style.opacity = "0";
+    setTimeout(() => {
+      mainImg.src = fullSrc;
+      mainImg.style.opacity = "1";
+    }, 120);
+
+    thumbs.forEach((t) => t.classList.remove("active"));
+    newThumb.classList.add("active");
+    currentIndex = index;
+  };
+
+  // Thumbs click
+  thumbs.forEach((thumb, index) => {
+    thumb.addEventListener("click", () => setImage(index));
+  });
+
+  // Arrows
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      const nextIndex =
+        (currentIndex - 1 + thumbs.length) % thumbs.length;
+      setImage(nextIndex);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      const nextIndex = (currentIndex + 1) % thumbs.length;
+      setImage(nextIndex);
+    });
+  }
+})();
+
+// ============================
+// Optional: simple fade-up helper
+// (Only used if you add .ts-fade-up in HTML)
+// ============================
+(function () {
+  const els = Array.from(document.querySelectorAll(".ts-fade-up"));
+  if (!els.length || !("IntersectionObserver" in window)) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("ts-in-view");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.18 }
+  );
+
+  els.forEach((el) => observer.observe(el));
+})();
+
+    // Year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Simple 3D carousel logic (pairs with .ts-carousel-* CSS)
+    (function () {
+      const track = document.querySelector("[data-carousel-track]");
+      if (!track) return;
+
+      const slides = Array.from(track.querySelectorAll(".ts-carousel-item"));
+      const prevBtn = document.querySelector("[data-carousel-prev]");
+      const nextBtn = document.querySelector("[data-carousel-next]");
+      const dotsWrap = document.querySelector("[data-carousel-dots]");
+      const dots = dotsWrap ? Array.from(dotsWrap.querySelectorAll(".ts-dot")) : [];
+
+      let current = 0;
+      const last = slides.length - 1;
+
+      function getLeftIndex(i) {
+        return i === 0 ? last : i - 1;
+      }
+
+      function getRightIndex(i) {
+        return i === last ? 0 : i + 1;
+      }
+
+      function updateSlides(index) {
+        current = index;
+
+        slides.forEach((slide, i) => {
+          slide.classList.remove("is-active", "is-left", "is-right", "is-far");
+          if (i === current) {
+            slide.classList.add("is-active");
+          } else if (i === getLeftIndex(current)) {
+            slide.classList.add("is-left");
+          } else if (i === getRightIndex(current)) {
+            slide.classList.add("is-right");
+          } else {
+            slide.classList.add("is-far");
+          }
+        });
+
+        if (dots.length) {
+          dots.forEach((dot, i) => {
+            dot.classList.toggle("is-active", i === current);
+          });
+        }
+      }
+
+      function goNext() {
+        const next = current === last ? 0 : current + 1;
+        updateSlides(next);
+      }
+
+      function goPrev() {
+        const prev = current === 0 ? last : current - 1;
+        updateSlides(prev);
+      }
+
+      if (nextBtn) nextBtn.addEventListener("click", goNext);
+      if (prevBtn) prevBtn.addEventListener("click", goPrev);
+
+      if (dots.length) {
+        dots.forEach((dot, i) => {
+          dot.addEventListener("click", () => updateSlides(i));
+        });
+      }
+
+      // Optional: auto-rotate
+      let auto = setInterval(goNext, 9000);
+
+      [track, prevBtn, nextBtn, ...(dots || [])].forEach(el => {
+        if (!el) return;
+        el.addEventListener("mouseenter", () => clearInterval(auto));
+        el.addEventListener("mouseleave", () => {
+          auto = setInterval(goNext, 9000);
+        });
+      });
+
+      updateSlides(0);
+    })();

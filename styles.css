@@ -1,30 +1,49 @@
 /* ===========================
-   BASE
+   BASE / RESET
 =========================== */
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #ffffff;
   color: #0b0c10;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+.ts-shadow-soft {
+  box-shadow: 0 20px 70px rgba(15, 23, 42, 0.1);
 }
 
 /* ===========================
    HEADER / NAV
 =========================== */
+
 .ts-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-  transition: all 0.25s ease;
+  background: transparent; /* clear over hero video */
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    transform 220ms ease,
+    backdrop-filter 220ms ease;
 }
 
-.ts-header.scrolled {
-  background: rgba(255, 255, 255, 0.94);
+/* Scrolled state (JS adds .ts-header--scrolled) */
+.ts-header.ts-header--scrolled {
+  background-color: rgba(255, 255, 255, 0.96);
   box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+  border-color: rgba(15, 23, 42, 0.06);
+  backdrop-filter: blur(18px);
 }
 
 /* Nav row */
@@ -33,49 +52,83 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  height: 76px; /* slightly taller */
+  height: 80px;
 }
 
-/* Logo – BIGGER + LUXURY */
+/* Logo – BIGGER */
 .ts-logo {
-  height: 120px;            /* desktop size */
-  max-width: 260px;
+  height: 88px;           /* larger desktop logo */
   width: auto;
   object-fit: contain;
   display: block;
-  transition: height 0.25s ease, transform 0.25s ease;
+  transition:
+    height 0.25s ease,
+    transform 0.25s ease;
 }
 
-.ts-header.scrolled .ts-logo {
-  height: 60px;
+/* Scrolled logo shrinks a bit */
+.ts-header.ts-header--scrolled .ts-logo {
+  height: 64px;
   transform: translateY(-1px);
 }
 
-/* Nav links */
+/* Desktop nav links (start white over hero, turn dark on scroll) */
 .ts-link {
-  color: rgba(255, 255, 255, 0.769);
-  text-decoration: none;
   position: relative;
-  transition: color 0.2s ease;
-}
-
-.ts-link:hover {
-  color: rgba(198, 198, 198, 0.776);
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: color 180ms ease;
 }
 
 .ts-link::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -6px;
-  height: 1px;
+  bottom: -0.4rem;
   width: 0;
-  background: rgba(228, 228, 228, 0.703);
-  transition: width 0.2s ease;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.85);
+  opacity: 0.6;
+  transition:
+    width 200ms ease,
+    opacity 200ms ease;
+}
+
+.ts-link:hover {
+  color: #ffffff;
 }
 
 .ts-link:hover::after {
   width: 100%;
+  opacity: 1;
+}
+
+/* Scrolled nav colours */
+.ts-header.ts-header--scrolled .ts-link {
+  color: rgba(15, 23, 42, 0.7);
+}
+
+.ts-header.ts-header--scrolled .ts-link::after {
+  background-color: #0b0c10;
+}
+
+.ts-header.ts-header--scrolled .ts-link:hover {
+  color: #0b0c10;
+}
+
+/* Mobile links */
+.ts-m-link {
+  display: block;
+  padding: 10px 0;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(15, 23, 42, 0.8);
+}
+
+.ts-m-link:hover {
+  color: #0b0c10;
 }
 
 /* Buttons */
@@ -92,104 +145,176 @@ body {
   transition: all 0.2s ease;
 }
 
+/* Primary button (header + hero CTAs) */
 .ts-btn-primary {
-  background: rgba(11, 12, 16, 0.92);
-  color: #fff;
-  border: 1px solid rgba(11, 12, 16, 0.92);
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid rgba(15, 23, 42, 0.22);
 }
 
 .ts-btn-primary:hover {
-  background: rgba(11, 12, 16, 1);
+  background: #e5e7eb;
 }
 
-.ts-btn-ghost {
-  background: rgba(255, 255, 255, 0.78);
-  border: 1px solid rgba(15, 23, 42, 0.14);
-  color: rgba(11, 12, 16, 0.86);
+/* In scrolled state, invert schedule button */
+.ts-header.ts-header--scrolled .ts-btn-primary {
+  background: #0b0c10;
+  color: #ffffff;
+  border-color: #0b0c10;
 }
 
-.ts-btn-ghost:hover {
-  border-color: rgba(11, 12, 16, 0.35);
-  background: rgba(255, 255, 255, 0.92);
+.ts-header.ts-header--scrolled .ts-btn-primary:hover {
+  background: #111827;
 }
 
 /* Phone pill */
 .ts-phone {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   text-decoration: none;
-  color: rgba(11, 12, 16, 0.78);
-  padding: 10px 12px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  padding: 8px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  background: rgba(255, 255, 255, 0.72);
-  transition: all 0.2s ease;
-}
-
-.ts-phone:hover {
-  border-color: rgba(11, 12, 16, 0.3);
-  color: rgba(11, 12, 16, 1);
+  border: 1px solid transparent;
+  background: transparent;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .ts-phone i {
   font-size: 13px;
 }
 
-/* Mobile controls */
+/* Scrolled phone style */
+.ts-header.ts-header--scrolled .ts-phone {
+  color: rgba(11, 12, 16, 0.78);
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+.ts-header.ts-header--scrolled .ts-phone:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(15, 23, 42, 0.2);
+  color: rgba(11, 12, 16, 0.9);
+}
+
+/* Mobile icon button */
 .ts-icon-btn {
   height: 42px;
   width: 42px;
   border-radius: 999px;
-  border: 1px solid rgba(15, 23, 42, 0.14);
-  background: rgba(255, 255, 255, 0.78);
-  color: rgba(11, 12, 16, 0.7);
-  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease,
+    color 160ms ease;
 }
 
 .ts-icon-btn:hover {
-  border-color: rgba(11, 12, 16, 0.3);
-  color: rgb(225, 225, 225);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(15, 23, 42, 0.2);
+  color: rgba(11, 12, 16, 0.8);
 }
 
-.ts-m-link {
-  display: block;
-  padding: 10px 0;
-  font-size: 12px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  text-decoration: none;
+.ts-icon-btn:active {
+  transform: scale(0.96);
+}
+
+/* Scrolled icon */
+.ts-header.ts-header--scrolled .ts-icon-btn {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.14);
   color: rgba(11, 12, 16, 0.7);
 }
 
-.ts-m-link:hover {
-  color: rgba(11, 12, 16, 1);
+/* Nav layout tweaks */
+@media (min-width: 1024px) {
+  .ts-nav-row {
+    gap: 24px;
+    height: 84px;
+  }
+
+  .ts-phone {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+  }
+
+  .ts-btn.ts-btn-primary {
+    padding: 10px 18px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .ts-nav-row {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .ts-nav-row {
+    height: 64px;
+  }
+
+  .ts-logo {
+    height: 72px;   /* bigger mobile logo */
+  }
+
+  .ts-header.ts-header--scrolled .ts-logo {
+    height: 56px;
+  }
 }
 
 /* ===========================
-   HERO
+   HERO + VIDEO
 =========================== */
+
 .ts-hero {
   position: relative;
-  padding-top: 90px; /* matches fixed header */
+  padding-top: 90px; /* space for fixed nav */
 }
 
 .ts-hero-bg {
   position: absolute;
   inset: 0;
   overflow: hidden;
+  z-index: 0;
 }
 
-.ts-hero-img {
+.ts-hero-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.06);
-  filter: contrast(1.03) brightness(0.95) saturate(0.85);
-  animation: heroDrift 18s ease-in-out infinite alternate;
+  transform: scale(1.05);
+  filter: brightness(0.6) contrast(1.05);
 }
 
-/* airy overlay */
+/* Overlay over video */
+.ts-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 45%, rgba(255, 255, 255, 0.35), transparent 65%),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.35));
+}
+
+/* Hero content text – white over video */
+.ts-hero .ts-eyebrow-text,
+.ts-hero .ts-title,
+.ts-hero .ts-sub {
+  color: #ffffff;
+}
+
+.ts-hero .ts-line {
+  background: rgba(255, 255, 255, 0.75);
+}
 
 /* Eyebrow */
 .ts-eyebrow {
@@ -236,9 +361,43 @@ body {
   animation: fadeUp 0.85s ease-out forwards 0.18s;
 }
 
+/* Mobile hero tweaks */
+@media (max-width: 767px) {
+  .ts-hero {
+    min-height: 70vh;
+    padding-top: 80px;
+    padding-bottom: 2.5rem;
+  }
+
+  .ts-title {
+    font-size: 1.9rem;
+    line-height: 1.1;
+  }
+
+  .ts-sub {
+    font-size: 0.9rem;
+    max-width: 22rem;
+  }
+
+  .ts-hero .ts-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ts-hero .ts-btn + .ts-btn {
+    margin-top: 0.5rem;
+  }
+
+  .ts-hero-video {
+    transform: scale(1);
+    filter: brightness(0.55);
+  }
+}
+
 /* ===========================
    STATS
 =========================== */
+
 .ts-stats {
   padding: 28px 0 52px;
   background: #fff;
@@ -250,13 +409,17 @@ body {
   background: rgba(255, 255, 255, 0.92);
   padding: 22px 20px;
   box-shadow: 0 20px 70px rgba(15, 23, 42, 0.08);
+  text-align: center;
 }
 
 .ts-stat-num {
+  display: block;
+  margin: 0 auto;
   font-size: 34px;
   font-weight: 300;
   letter-spacing: 0.02em;
   color: rgba(11, 12, 16, 0.92);
+  font-variant-numeric: tabular-nums;
 }
 
 .ts-stat-label {
@@ -268,123 +431,19 @@ body {
 }
 
 /* ===========================
-   ABOUT SECTION + BLUEPRINT
+   ABOUT SECTION
 =========================== */
+
 .ts-about-section {
   background: #ffffff;
 }
 
-/* Image stack wrapper (the column already has relative from HTML) */
-.ts-about-photo {
-  border-radius: 22px;
-  overflow: hidden;
-  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.14);
-  position: relative;
-  z-index: 2;
+#about img {
+  transition: transform 260ms ease;
 }
 
-.ts-about-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Overlapping offsets */
-.ts-about-photo-mid {
-  position: absolute;
-  top: 22%;
-  right: -14%;
-  width: 88%;
-}
-
-.ts-about-photo-bottom {
-  position: absolute;
-  bottom: -18%;
-  left: -12%;
-  width: 82%;
-}
-
-/* Blueprint base panel */
-.ts-blueprint-panel {
-  position: absolute;
-  inset: -32px;
-  border-radius: 36px;
-  background:
-    linear-gradient(0deg, rgba(56, 139, 253, 0.18) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 139, 253, 0.18) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(56, 139, 253, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 139, 253, 0.08) 1px, transparent 1px);
-  background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
-  opacity: 0.9;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* Dimension lines */
-.ts-dimension-line {
-  position: absolute;
-  background: rgba(0, 0, 0, 0.9);
-  z-index: 1;
-}
-
-.ts-dimension-h {
-  height: 1px;
-  width: 120%;
-  top: 16%;
-  left: -10%;
-}
-
-.ts-dimension-v {
-  width: 1px;
-  height: 120%;
-  left: 22%;
-  top: -10%;
-}
-
-/* Blueprint corners */
-.ts-corner {
-  position: absolute;
-  width: 28px;
-  height: 28px;
-  border: 2px solid rgba(0, 0, 0, 0.9);
-  z-index: 1;
-}
-
-.ts-corner.tl {
-  top: -14px;
-  left: -14px;
-  border-right: none;
-  border-bottom: none;
-}
-.ts-corner.tr {
-  top: -14px;
-  right: -14px;
-  border-left: none;
-  border-bottom: none;
-}
-.ts-corner.bl {
-  bottom: -14px;
-  left: -14px;
-  border-right: none;
-  border-top: none;
-}
-.ts-corner.br {
-  bottom: -14px;
-  right: -14px;
-  border-left: none;
-  border-top: none;
-}
-
-/* Mobile cleanup: stack the images without absolute overlap */
-@media (max-width: 1024px) {
-  .ts-about-photo-mid,
-  .ts-about-photo-bottom {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    margin-top: 18px;
-  }
+#about img:hover {
+  transform: scale(1.02);
 }
 
 /* ===========================
@@ -402,7 +461,7 @@ body {
   margin-top: 1.5rem;
   min-height: 360px;
   cursor: grab;
-  transition: transform 0.25s ease; /* for drag easing back */
+  transition: transform 0.25s ease;
   z-index: 1;
 }
 
@@ -511,11 +570,11 @@ body {
   cursor: pointer;
   color: rgba(11, 12, 16, 0.75);
   transition: all 0.2s ease;
-  z-index: 2; /* keep above cards */
+  z-index: 2;
 }
 
 .ts-carousel-btn:hover {
-  border-color: rgba(11, 12, 16, 0.3);
+  border-color: rgba(15, 23, 42, 0.3);
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
 }
 
@@ -545,7 +604,7 @@ body {
 /* Desktop: real 3D layout */
 @media (min-width: 1024px) {
   .ts-carousel-track {
-    min-height: 380px;
+    min-height: 420px;
     display: block;
     perspective: 1400px;
   }
@@ -555,635 +614,470 @@ body {
     top: 0;
     left: 50%;
     transform-origin: center center;
-    opacity: 0;
-    filter: grayscale(0.2) brightness(0.94);
     pointer-events: none;
+    opacity: 1;
+    background: #fff;
+    will-change: transform, filter;
+    filter: grayscale(0.2) brightness(0.94);
+  }
+
+  .ts-carousel-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    pointer-events: none;
+    opacity: 0;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(1px);
+    transition: opacity 0.35s ease;
   }
 
   .ts-carousel-item.is-active {
-    opacity: 1;
-    transform: translateX(-50%) translateZ(80px) rotateY(0deg);
-    filter: none;
-    pointer-events: auto;
-  }
-
-  .ts-carousel-item.is-left {
-    opacity: 0.7;
-    transform: translateX(calc(-50% - 220px)) translateZ(0px) rotateY(20deg);
-  }
-
-  .ts-carousel-item.is-right {
-    opacity: 0.7;
-    transform: translateX(calc(-50% + 220px)) translateZ(0px) rotateY(-20deg);
-  }
-
-  .ts-carousel-item.is-far {
-    opacity: 0;
-  }
-}
-
-/* ===========================
-   ANIMATIONS
-=========================== */
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes heroDrift {
-  0% {
-    transform: scale(1.06) translate3d(0, 0, 0);
-  }
-  100% {
-    transform: scale(1.1) translate3d(-10px, -6px, 0);
-  }
-}
-
-/* ===========================
-   MOBILE TWEAKS
-=========================== */
-@media (max-width: 767px) {
-  .ts-nav-row {
-    height: 62px;
-  }
-
-  .ts-logo {
-    height: 64px;
-    max-width: 220px;
-  }
-
-  .ts-header.scrolled .ts-logo {
-    height: 52px;
-  }
-
-  .ts-hero {
-    padding-top: 86px;
-  }
-}
-@media (min-width: 1024px){
-  .ts-carousel-track{
-    min-height: 420px;
-    perspective: 1400px;
-  }
-
-  .ts-carousel-item{
-    position:absolute;
-    top:0;
-    left:50%;
-    transform-origin:center center;
-    pointer-events:none;
-    opacity: 1;                 /* IMPORTANT: keep opaque */
-    background:#fff;            /* real white */
-    will-change: transform, filter;
-  }
-
-  /* soft glass overlay to "ghost" side cards without transparency blending */
-  .ts-carousel-item::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    border-radius:24px;
-    pointer-events:none;
-    opacity:0;
-    background: rgba(255,255,255,0.55);
-    backdrop-filter: blur(1px);
-    transition: opacity .35s ease;
-  }
-
-  .ts-carousel-item.is-active{
     z-index: 3;
-    pointer-events:auto;
+    pointer-events: auto;
     transform: translateX(-50%) translateZ(110px) rotateY(0deg);
     filter: none;
   }
 
   .ts-carousel-item.is-left,
-  .ts-carousel-item.is-right{
+  .ts-carousel-item.is-right {
     z-index: 2;
-    pointer-events:auto;
+    pointer-events: auto;
     filter: blur(1.2px) grayscale(0.45) brightness(0.93);
   }
 
-  /* make side cards "barely visible" but clean */
   .ts-carousel-item.is-left::after,
-  .ts-carousel-item.is-right::after{
+  .ts-carousel-item.is-right::after {
     opacity: 1;
   }
 
-  .ts-carousel-item.is-left{
+  .ts-carousel-item.is-left {
     transform: translateX(calc(-50% - 250px)) translateZ(20px) rotateY(22deg) scale(0.98);
   }
 
-  .ts-carousel-item.is-right{
+  .ts-carousel-item.is-right {
     transform: translateX(calc(-50% + 250px)) translateZ(20px) rotateY(-22deg) scale(0.98);
   }
 
-  /* hide far slides completely */
-  .ts-carousel-item.is-far{
+  .ts-carousel-item.is-far {
     opacity: 0;
-    pointer-events:none;
+    pointer-events: none;
     transform: translateX(-50%) translateZ(-120px) scale(0.95);
     filter: blur(2px);
   }
 }
-/* HERO VIDEO */
-.ts-hero {
-  position: relative;
-}
 
-.ts-hero-bg {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  z-index: 0;
-}
+/* ===========================
+   SERVICES – HIGH END
+=========================== */
 
-.ts-hero-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* fills hero without distortion */
-  transform: scale(1.05);
-  filter: brightness(0.6) contrast(1.05);
-}
-
-/* Overlay stays the same but tuned for video */
-.ts-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      90deg,
-  
-    ),
-    radial-gradient(circle at 20% 45%, rgba(255,255,255,0.55), transparent 65%);
-}
-
-/* Mobile performance tweak */
-@media (max-width: 768px) {
-  .ts-hero-video {
-    transform: scale(1);
-    filter: brightness(0.55);
-  }
-}
-/* =========================
-   CLEAR / TRANSPARENT NAV
-========================= */
-
-.ts-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 50;
-  background: transparent;
-  transition: background 0.35s ease, backdrop-filter 0.35s ease;
-}
-
-/* Inner row */
-.ts-nav-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 76px;
-}
-
-/* Logo */
-.ts-logo {
-
-  width: auto;
-}
-
-/* Nav links */
-.ts-link {
-  color: rgba(255, 255, 255, 0.85);
-  text-decoration: none;
-  transition: color 0.25s ease;
-}
-
-.ts-link:hover {
-  color: #ffffff;
-}
-
-/* Phone */
-.ts-phone {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: rgba(0, 0, 0, 0.9);
-  font-size: 13px;
-}
-
-/* Buttons */
-.ts-btn-primary {
-  background: white;
-  color: black;
-}
-
-/* Mobile icon */
-.ts-icon-btn {
-  color: white;
-  font-size: 18px;
-}
-
-/* =========================
-   SCROLLED STATE
-========================= */
-
-.ts-header.is-scrolled {
-  background: rgba(255,255,255,0.82);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-}
-
-.ts-header.is-scrolled .ts-link,
-.ts-header.is-scrolled .ts-phone,
-.ts-header.is-scrolled .ts-icon-btn {
-  color: #0b0c10;
-}
-
-.ts-header.is-scrolled .ts-btn-primary {
-  background: #0b0c10;
-  color: white;
-}
-/* =========================
-   HERO TEXT → WHITE
-========================= */
-.ts-hero .ts-eyebrow-text,
-.ts-hero .ts-title,
-.ts-hero .ts-sub {
-  color: #ffffff;
-}
-
-.ts-hero .ts-line {
-  background: rgba(255, 255, 255, 0.75);
-}
-
-/* =========================
-   TOP NAV BUTTONS HOVER
-   (barely grey on hover)
-========================= */
-
-/* Schedule button in the header */
-.ts-header .ts-btn-primary {
+.ts-services {
   background: #ffffff;
-  color: #bebebe;
 }
 
-.ts-header .ts-btn-primary:hover {
-  background: #e5e7eb; /* subtle grey */
+/* Card */
+.ts-service-card {
+  position: relative;
+  border-radius: 22px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: radial-gradient(circle at top left, #ffffff, #f9fafb);
+  box-shadow: 0 18px 55px rgba(15, 23, 42, 0.08);
+  padding: 22px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  overflow: hidden;
+  transition:
+    transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 0.6s ease,
+    border-color 0.6s ease;
 }
 
-/* Phone pill in the header */
-.ts-header .ts-phone:hover {
-  background: #f3f4f6; /* very light grey */
+.ts-service-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 65px rgba(15, 23, 42, 0.14);
+  border-color: rgba(15, 23, 42, 0.16);
 }
-/* =========================
-   SOFT / CLEAR HOVER STATES
-   (no black on hover)
-========================= */
 
-/* Primary buttons (Schedule, hero CTAs, etc.) */
-.ts-btn-primary:hover {
-  background: rgba(255, 255, 255, 0.92);  /* slightly dimmer / softer */
+/* Content */
+.ts-service-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Icon */
+.ts-service-icon-wrap {
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  background: radial-gradient(circle at top left, #0f172a, #111827);
+}
+
+.ts-service-icon {
+  font-size: 18px;
+  color: #e5e7eb;
+}
+
+/* Text */
+.ts-service-title {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
   color: #0b0c10;
-  border-color: rgba(15, 23, 42, 0.22);
+}
+
+.ts-service-text {
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(11, 12, 16, 0.7);
+}
+
+/* List */
+.ts-service-list {
+  margin-top: 6px;
+  padding-left: 0;
+  list-style: none;
+  font-size: 12px;
+  color: rgba(11, 12, 16, 0.65);
+}
+
+.ts-service-list li + li {
+  margin-top: 3px;
+}
+
+/* CTA reveal */
+.ts-service-cta-wrap {
+  margin-top: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start;
+  transition:
+    max-height 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 0.5s ease,
+    margin-top 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.ts-service-card:hover .ts-service-cta-wrap {
+  margin-top: 16px;
+  max-height: 80px;
+  opacity: 1;
+  transition-delay: 0.12s;
+}
+
+/* CTA button */
+.ts-service-cta {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.35);
+  background: #0b0c10;
+  color: #ffffff;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.ts-service-cta:hover,
+.ts-service-cta:focus,
+.ts-service-cta:active {
+  background: #0b0c10;
+  color: #ffffff;
+  opacity: 0.85;
+  border-color: rgba(15, 23, 42, 0.5);
   transform: translateY(-1px);
 }
 
-/* Ghost buttons */
-.ts-btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(15, 23, 42, 0.22);
-}
-
-/* Phone pill */
-.ts-phone:hover {
-  background: rgba(255, 255, 255, 0.9);
-  color: rgba(11, 12, 16, 0.9);
-  border-color: rgba(15, 23, 42, 0.2);
-}
-
-/* Mobile menu icon */
-.ts-icon-btn:hover {
-  background: rgba(255, 255, 255, 0.9);
-  color: rgba(11, 12, 16, 0.8);
-  border-color: rgba(15, 23, 42, 0.2);
-}
-
-/* Carousel arrows */
-.ts-carousel-btn:hover {
-  background: rgba(255, 255, 255, 0.96);
-  color: rgba(11, 12, 16, 0.85);
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14);
-}
-
-/* Keep nav links clean: only subtle text shift, no dark bg */
-.ts-link:hover {
-  color: rgba(0, 0, 0, 0.92);
-}
-/* =========================
-   CENTER STATS CONTENT
-========================= */
-
-.ts-stat-card {
-  text-align: center;
-}
-
-.ts-stat-num {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.ts-stat-label {
-  text-align: center;
-}
-/* =========================
-   HERO — SMALLER ON IPHONE
-========================= */
-@media (max-width: 767px) {
-  .ts-hero {
-    min-height: 70vh;          /* shorter hero */
-    padding-top: 80px;         /* room for fixed nav */
-    padding-bottom: 2.5rem;
-  }
-
-  .ts-title {
-    font-size: 1.9rem;         /* slightly smaller text */
-    line-height: 1.1;
-  }
-
-  .ts-sub {
-    font-size: 0.9rem;
-    max-width: 22rem;
-  }
-
-  .ts-hero .ts-btn {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .ts-hero .ts-btn + .ts-btn {
-    margin-top: 0.5rem;
-  }
-}
-/* =========================
-   NAV LAYOUT TWEAKS
-========================= */
-
-/* Desktop / laptop */
-@media (min-width: 1024px) {
-  .ts-nav-row {
-    gap: 24px;
-    height: 80px;
-  }
-
-  .ts-header nav {
-    gap: 24px;
-  }
-
-  .ts-phone {
-    padding: 6px 10px;
-    font-size: 0.78rem;
-  }
-
-  .ts-btn.ts-btn-primary {
-    padding: 10px 18px;
-    font-size: 0.7rem;
+/* Mobile – always show CTA */
+@media (max-width: 768px) {
+  .ts-service-cta-wrap {
+    max-height: none;
+    opacity: 1;
+    margin-top: 14px;
   }
 }
 
-/* Tablet + down: keep things from feeling cramped */
-@media (max-width: 1023px) {
-  .ts-nav-row {
-    gap: 10px;
-  }
-}
-/* =========================
-   CONTACT — REFINED
-========================= */
+/* ===========================
+   CONTACT – CLEAN WHITE BLOCK
+=========================== */
 
 .ts-contact {
-  background: #0f172a;
-}
-
-/* Trust pills */
-.ts-contact-pill {
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.14);
-  background: rgba(255,255,255,0.05);
-}
-
-/* Form shell */
-.ts-contact-form {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 24px;
-  padding: 32px;
-  backdrop-filter: blur(6px);
-}
-
-/* Labels */
-.ts-label {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 11px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
-}
-
-/* Inputs */
-.ts-input-dark,
-.ts-textarea-dark {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.14);
-  background: rgba(0,0,0,0.3);
-  color: white;
-  font-size: 14px;
-  outline: none;
-}
-
-.ts-input-dark:focus,
-.ts-textarea-dark:focus {
-  border-color: rgba(255,255,255,0.4);
-  background: rgba(0,0,0,0.4);
-}
-
-/* Mobile polish */
-@media (max-width: 767px) {
-  .ts-contact-form {
-    padding: 24px;
-  }
-}
-
-
-/* =========================
-   PORTFOLIO FEATURE SECTION
-========================= */
-
-.ts-portfolio {
-  background: #ffffff;
-}
-
-/* LEFT INFO */
-.ts-project-info {
-  max-width: 460px;
-}
-
-.ts-project-title {
-  font-size: 2.4rem;
-  font-weight: 300;
-  letter-spacing: 0.14em;
-  margin-bottom: 12px;
+  position: relative;
+  background: #f5f5f7;
   color: #0b0c10;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
 }
 
-.ts-project-location {
-  font-size: 13px;
+.ts-contact-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 4.5rem 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.2fr);
+  gap: 3rem;
+  align-items: stretch;
+}
+
+/* Left: media + copy */
+.ts-contact-media {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.ts-contact-photo {
+  border-radius: 22px;
+  overflow: hidden;
+  background: #0b0c10;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.22);
+}
+
+.ts-contact-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.02);
+  transition: transform 0.6s ease;
+}
+
+.ts-contact-photo:hover img {
+  transform: scale(1.06);
+}
+
+.ts-contact-copy {
+  padding-right: 0.5rem;
+}
+
+.ts-contact-heading {
+  font-size: 1.9rem;
+  line-height: 1.15;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.ts-contact-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(15, 23, 42, 0.7);
+  margin-bottom: 1rem;
+}
+
+.ts-contact-points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.86rem;
+  color: rgba(15, 23, 42, 0.75);
+}
+
+.ts-contact-points li::before {
+  content: "•";
+  margin-right: 0.45rem;
+  color: rgba(15, 23, 42, 0.55);
+}
+
+/* Right: form */
+.ts-contact-form-wrap {
+  align-self: center;
+}
+
+.ts-contact-form {
+  border-radius: 22px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  background: #ffffff;
+  box-shadow: 0 18px 55px rgba(15, 23, 42, 0.08);
+  padding: 1.9rem 1.8rem 1.9rem;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    background-color 220ms ease;
+}
+
+.ts-contact-form:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 26px 70px rgba(15, 23, 42, 0.16);
+}
+
+.ts-contact-form-heading {
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+  color: rgba(15, 23, 42, 0.92);
+}
+
+.ts-contact-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.ts-contact-field {
+  margin-bottom: 1rem;
+}
+
+.ts-contact-label {
+  display: block;
+  font-size: 0.7rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #6b7280;
-  margin-bottom: 20px;
+  color: rgba(15, 23, 42, 0.55);
+  margin-bottom: 0.28rem;
 }
 
-.ts-project-desc {
-  font-size: 15px;
-  line-height: 1.7;
-  color: #374151;
-  margin-bottom: 18px;
-}
-
-.ts-project-credit {
-  font-size: 13px;
-  color: #6b7280;
-  margin-bottom: 26px;
-}
-
-.ts-project-btn {
-  display: inline-block;
-  font-size: 11px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  padding: 10px 18px;
-  border: 1px solid rgba(15,23,42,0.2);
-  color: #0b0c10;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.ts-project-btn:hover {
-  background: rgba(0,0,0,0.05);
-}
-
-/* RIGHT GALLERY */
-.ts-project-gallery {
+.ts-contact-input,
+.ts-contact-textarea {
   width: 100%;
-}
-
-/* Main image */
-.ts-project-main {
-  position: relative;
-  border-radius: 18px;
-  overflow: hidden;
-  margin-bottom: 14px;
-}
-
-.ts-project-main img {
-  width: 100%;
-  height: 420px;
-  object-fit: cover;
-  display: block;
-}
-
-/* Arrows */
-.ts-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.9);
-  border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  font-size: 20px;
-  cursor: pointer;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #f9fafb;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.9rem;
   color: #0b0c10;
-  display: flex;
+  outline: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.ts-contact-input::placeholder,
+.ts-contact-textarea::placeholder {
+  color: rgba(148, 163, 184, 0.9);
+}
+
+.ts-contact-input:focus,
+.ts-contact-textarea:focus {
+  border-color: rgba(37, 99, 235, 0.65);
+  background: #ffffff;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.22);
+}
+
+.ts-contact-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Button */
+.ts-contact-btn {
+  margin-top: 0.4rem;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
-  transition: box-shadow 0.2s ease, transform 0.15s ease;
-}
-
-.ts-arrow.left {
-  left: 14px;
-}
-
-.ts-arrow.right {
-  right: 14px;
-}
-
-.ts-arrow:hover {
-  box-shadow: 0 10px 25px rgba(15,23,42,0.22);
-  transform: translateY(-50%) translateY(-1px);
-}
-
-.ts-arrow:focus {
-  outline: none;
-}
-
-/* Thumbnails */
-.ts-project-thumbs {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-}
-
-.ts-project-thumbs img {
-  width: 80px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 8px;
-  opacity: 0.45;
+  padding: 0.8rem 2.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.82);
+  background: #0b0c10;
+  color: #ffffff;
+  font-size: 0.74rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  text-decoration: none;
   cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.15s ease;
-  flex-shrink: 0;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease,
+    border-color 0.22s ease;
 }
 
-.ts-project-thumbs img.active {
+.ts-contact-btn:hover {
+  transform: translateY(-1px);
+  background: #111827;
+  border-color: #111827;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.28);
+}
+
+/* Contact responsive */
+@media (max-width: 960px) {
+  .ts-contact-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.25rem;
+  }
+
+  .ts-contact-form-wrap {
+    order: 2;
+  }
+
+  .ts-contact-media {
+    order: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .ts-contact-inner {
+    padding: 3.25rem 1.25rem;
+  }
+
+  .ts-contact-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ts-contact-form {
+    padding: 1.6rem 1.4rem 1.7rem;
+  }
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer a {
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: none;
+}
+
+/* ===========================
+   UTIL: FADE-UP ANIMATION
+=========================== */
+
+.ts-fade-up {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+}
+
+.ts-fade-up.ts-in-view {
   opacity: 1;
-  transform: translateY(-2px);
+  transform: translateY(0);
 }
 
-.ts-project-thumbs img:hover {
-  opacity: 0.8;
-}
+/* ===========================
+   KEYFRAMES
+=========================== */
 
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-  .ts-project-main img {
-    height: 360px;
-  }
-}
-
-@media (max-width: 768px) {
-  .ts-project-title {
-    font-size: 1.9rem;
-  }
-
-  .ts-project-main img {
-    height: 260px;
-  }
-
-  .ts-project-thumbs img {
-    width: 68px;
-    height: 50px;
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
