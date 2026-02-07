@@ -1081,19 +1081,3 @@ footer a:hover {
     transform: translateY(0);
   }
 }
-.ts-project-swiper .swiper-slide {
-  width: 280px;
-  max-width: 80vw;
-}
-
-@media (min-width: 768px) {
-  .ts-project-swiper .swiper-slide {
-    width: 320px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .ts-project-swiper .swiper-slide {
-    width: 360px;
-  }
-}

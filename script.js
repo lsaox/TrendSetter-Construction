@@ -227,46 +227,18 @@
 // SWIPER – FEATURED PROJECTS
 // ============================
 (function () {
-  // We wait for DOM *and* Swiper to exist
   function initSwiperWhenReady() {
     if (typeof Swiper === "undefined") {
-      // try again shortly until the Swiper CDN script has loaded
-      setTimeout(initSwiperWhenReady, 80);
+      setTimeout(initSwiperWhenReady, 60);
       return;
     }
 
-    new Swiper(".ts-project-swiper", {
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
+    const baseConfig = {
       loop: true,
-      speed: 600,
+      speed: 650,
       grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: 1.05,
-      spaceBetween: 18,
-
-      effect: "coverflow",
-      coverflowEffect: {
-        rotate: 12,
-        stretch: 0,
-        depth: 120,
-        modifier: 1,
-        slideShadows: false,
-      },
-
-      breakpoints: {
-        640: {
-          slidesPerView: 1.2,
-          spaceBetween: 22,
-        },
-        1024: {
-          slidesPerView: 1.6,
-          spaceBetween: 26,
-        },
-        1280: {
-          slidesPerView: 1.8,
-          spaceBetween: 30,
-        },
-      },
-
       navigation: {
         nextEl: "[data-swiper-next]",
         prevEl: "[data-swiper-prev]",
@@ -277,8 +249,54 @@
         bulletClass: "ts-swiper-bullet",
         bulletActiveClass: "ts-swiper-bullet-active",
       },
+    };
+
+    const mobileConfig = Object.assign({}, baseConfig, {
+      effect: "slide",
+      centeredSlides: false,
+      slidesPerView: 1,
+      spaceBetween: 14,
     });
+
+    const desktopConfig = Object.assign({}, baseConfig, {
+      effect: "coverflow",
+      centeredSlides: true,
+      slidesPerView: "auto",
+      spaceBetween: 26,
+      coverflowEffect: {
+        rotate: 10,
+        stretch: 0,
+        depth: 140,
+        modifier: 1,
+        slideShadows: false,
+      },
+      breakpoints: {
+        1024: {
+          spaceBetween: 28,
+          coverflowEffect: {
+            rotate: 12,
+            stretch: 0,
+            depth: 160,
+            modifier: 1,
+            slideShadows: false,
+          },
+        },
+        1280: {
+          spaceBetween: 32,
+          coverflowEffect: {
+            rotate: 14,
+            stretch: 0,
+            depth: 180,
+            modifier: 1,
+            slideShadows: false,
+          },
+        },
+      },
+    });
+
+    new Swiper(".ts-project-swiper", isMobile ? mobileConfig : desktopConfig);
   }
 
-  document.addEventListener("DOMContentLoaded", initSwiperWhenReady);
+  // Use load so layout + Swiper script are fully ready
+  window.addEventListener("load", initSwiperWhenReady);
 })();
