@@ -251,12 +251,12 @@
       },
     };
 
-    const mobileConfig = Object.assign({}, baseConfig, {
-      effect: "slide",
-      centeredSlides: false,
-      slidesPerView: 1,
-      spaceBetween: 14,
-    });
+   const mobileConfig = Object.assign({}, baseConfig, {
+  effect: "slide",
+  centeredSlides: false,   // CRITICAL
+  slidesPerView: 1,
+  spaceBetween: 0,         // CRITICAL
+});
 
     const desktopConfig = Object.assign({}, baseConfig, {
       effect: "coverflow",

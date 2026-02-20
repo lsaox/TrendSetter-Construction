@@ -1081,3 +1081,53 @@ footer a:hover {
     transform: translateY(0);
   }
 }
+/* ===========================
+   SWIPER MOBILE FIX
+=========================== */
+@media (max-width: 767px) {
+  .ts-project-swiper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .ts-project-swiper .swiper-slide {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Kill floating card look on mobile */
+  .ts-project-swiper .ts-carousel-item {
+    border-radius: 16px;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  /* Give content breathing room instead */
+  .ts-project-swiper .ts-carousel-item {
+    padding: 16px;
+  }
+}
+/* ===========================
+   SWIPER LAPTOP WIDTH TUNING
+   (keeps cards narrower)
+=========================== */
+@media (min-width: 1024px) and (max-width: 1440px) {
+  /* Limit how wide each slide can be */
+  .ts-project-swiper .swiper-slide {
+    width: 720px;              /* tweak this number to taste (660–780) */
+    max-width: 90vw;
+  }
+
+  /* Make sure the card inside is centered and not stretching */
+  .ts-project-swiper .swiper-slide > article {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Keep the image from feeling insanely wide/tall */
+  .ts-project-swiper .swiper-slide img {
+    height: 240px;
+    object-fit: cover;
+  }
+}
